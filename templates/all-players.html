@@ -4,7 +4,7 @@
 
 
 {% block content %}
-<h1>This page shows all players in the database</h1>
+<h3>Page shows all players in the database</h3>
 
 {% if players %}
   <table class="table">
@@ -15,7 +15,9 @@
       <th scope="col">Age</th>
       <th scope="col">Height</th>
       <th scope="col">Weight</th>
+      <th scope="col">Position</th>
       <th scope="col">Jersey Number</th>
+      <th scope="col">Update</th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +28,12 @@
         <td>{{p.age}}</td>
         <td>{{p.height}}</td>
         <td>{{p.weight}}</td>
+        <td>{{p.position}}</td>
         <td>{{p.jersey_num}}</td>
+        <td>
+          <a href="/players/edit/{{p.id}}" class="btn btn-primary">Edit</a>
+          <a class="btn btn-danger">Delete</a>
+        </td>
 
       </tr>
     {% endfor %}

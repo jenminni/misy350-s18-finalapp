@@ -4,10 +4,9 @@
 
 
 {% block content %}
-<h1>This page shows all teams in the database</h1>
+<h3>Page shows all NBA sports teams in the database</h3>
 
 {% if teams %}
-  <h2>have data</h2>
   <table class="table">
   <thead>
     <tr>
@@ -15,6 +14,7 @@
       <th scope="col">Team Name</th>
       <th scope="col">Location</th>
       <th scope="col">Team Colors</th>
+      <th scope="col">Update</th>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +24,11 @@
         <td>{{t.name}}</td>
         <td>{{t.location}}</td>
         <td>{{t.team_colors}}</td>
-  
+        <td>
+          <a href="/teams/edit/{{t.id}}" class="btn btn-primary">Edit</a>
+          <a class="btn btn-danger">Delete</a>
+        </td>
+
 
       </tr>
     {% endfor %}

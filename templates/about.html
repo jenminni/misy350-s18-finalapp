@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} About Me {% endblock %}
+
+
+{% block content %}
+<head>
+  <h1>About Me</h1>
+
+  <h3>Jen Minnich</h3>
+</head>
+
+<body>
+  <p>Below are a few fast facts about me!</p>
+  <ul>
+    <li>I attend University of Delaware</li>
+    <li>My major is Management Information Systems</li>
+    <li>I am currently a rising senior</li>
+    <li>I've been coding for 4 years (and counting!)</li>
+    <li>I love basketball and have been keeping up with the playoffs - which is why I chose to incorporate it into my final project</li>
+  </ul>
+
+  <img src="{{ url_for('static', filename='img/jen.jpg') }}" alt="" height="250px" width="180px">
+</body>
+
+
+
+
+{% endblock %}

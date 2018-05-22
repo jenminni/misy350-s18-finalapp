@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Update - Players {% endblock %}
+
+{% block content %}
+<h1>Edit the player:</h1>
+
+
+{% if players %}
+
+  <form action="/players/edit/{{players.id}}" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Player's Name</label>
+    <input class="form-control" name="name" value="{{players.name}}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Player's Age</label>
+    <input class="form-control" name="age" value="{{players.age}}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Player's Height</label>
+    <input class="form-control" name="height" value="{{players.height}}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Player's Weight</label>
+    <input class="form-control" name="weight" value="{{players.weight}}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Player's Position</label>
+    <input class="form-control" name="position" value="{{players.position}}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Player's Jersey Number</label>
+    <input class="form-control" name="jersey_num" value="{{players.jersey_num}}">
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+{% else %}
+  <h2>Player doesn't exist</h2>
+{% endif %}
+
+
+{% endblock %}
