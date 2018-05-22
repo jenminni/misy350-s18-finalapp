@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/jenminni/misy350-s18/misy350-s18-final/nba/venv"
+VIRTUAL_ENV="/Users/jenminni/misy350-s18/misy350-s18-final/misy350-s18-finalapp/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

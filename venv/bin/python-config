@@ -1,4 +1,4 @@
-#!/Users/jenminni/misy350-s18/misy350-s18-final/nba/venv/bin/python
+#!/Users/jenminni/misy350-s18/misy350-s18-final/misy350-s18-finalapp/venv/bin/python
 
 import sys
 import getopt

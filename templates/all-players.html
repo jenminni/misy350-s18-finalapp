@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %} All Players {% endblock %}
+
+
+{% block content %}
+<h1>This page shows all players in the database</h1>
+
+{% if players %}
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Height</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Jersey Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in players %}
+      <tr>
+        <th scope="row">{{p.id}}</th>
+        <td>{{p.name}}</td>
+        <td>{{p.age}}</td>
+        <td>{{p.height}}</td>
+        <td>{{p.weight}}</td>
+        <td>{{p.jersey_num}}</td>
+
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% else %}
+  <h2>players table is empty</h2>
+{% endif %}
+
+{% endblock %}

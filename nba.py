@@ -15,26 +15,37 @@ class Team(db.Model):
     __tablename__ = 'teams'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
-    about = db.Column(db.Text)
     location = db.Column(db.Text)
     team_colors = db.Column(db.Text)
-    players = db.relationship('Players', backref='team', cascade='delete')
+    players = db.relationship('Player', backref='team', cascade='delete')
 
 
 class Player(db.Model):
     __tablename__ = 'players'
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(64))
-    last_name = db.Column(db.String(64))
+    name = db.Column(db.Text)
     age = db.Column(db.Integer)
-    height = db.Column(db.Integer)
-    weight = db.Column(db.Integer)
+    height = db.Column(db.Text)
+    weight = db.Column(db.Text)
     jersey_num = db.Column(db.Integer)
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/teams')
+def all_teams():
+    teams = Team.query.all()
+    return render_template('all-teams.html', teams=teams)
+
+
+@app.route('/players')
+def all_players():
+    players = Player.query.all()
+    return render_template('all-players.html', players=players)
 
 
 
