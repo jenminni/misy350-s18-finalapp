@@ -4,9 +4,13 @@
 
 
 {% block content %}
-<h3>Page shows all players in the database<br></h3>
+<div class="container">
+  <h3>All players in the database</h3>
+</div>
 
 {% if players %}
+
+<div class="container">
   <table class="table">
   <thead>
     <tr>
@@ -17,8 +21,8 @@
       <th scope="col">Weight</th>
       <th scope="col">Position</th>
       <th scope="col">Jersey Number</th>
-      <th scope="col">Team ID #</th>
-      <th scope="col">Update</th>
+      <th scope="col">Team</th>
+      <th scope="col">Options</th>
     </tr>
   </thead>
   <tbody>
@@ -31,20 +35,78 @@
         <td>{{p.weight}}</td>
         <td>{{p.position}}</td>
         <td>{{p.jersey_num}}</td>
-        <td>{{p.team_id}}</td>
+        <td>{{p.team.name}}</td>
         <td>
           <a href="/players/edit/{{p.id}}" class="btn btn-primary">Edit</a>
-          <a class="btn btn-danger">Delete</a>
+          <button class="btn btn-danger delete_ajax_btn" role="button" data-player-id="{{p.id}}">Delete</a>
         </td>
 
       </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>
+
+<div class="container">
+  <a href="/players/add" class="btn btn-primary">Add a Player</a>
+</div>
 
 
 {% else %}
   <h2>players table is empty</h2>
 {% endif %}
 
+{% endblock %}
+
+{% block scripts%}
+{{super()}}
+<script>
+  $(document).ready(function() {
+    $(".delete_ajax_btn").click(function(event) {
+      var player_id = $(this).data("player-id");
+      // get the table row of this song
+      var row = $(this).parent().parent();
+      swal({
+          title: "Are you sure?",
+          type: "warning",
+          html: true,
+          showCancelButton: true,
+          confirmButtonColor: "#f44336",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+        },
+        function(isConfirm) {
+            if (isConfirm) {
+              $.ajax({
+                  type: "DELETE",
+                  url: "/api/players/" + player_id,
+                  success: function(response) {
+                    console.log(response);
+                    row.remove(); // remove the table row
+                    swal({
+                      title: "Deleted!",
+                      text: response.name + " has been deleted.",
+                      type: "success",
+                      timer: 2500,
+                      showConfirmButton: false
+                    }); // end of SweetAlert
+                  } // end of success callback function
+                }) // end of ajax call
+              .fail(function(error) {
+                   // console.log(data);
+                swal({
+                  title:"Oops...",
+                  text: "Deletion failed",
+                  type: "error",
+                  timer: 2000,
+                  showConfirmButton: false
+                }); // end of SweetAlert
+              }); // end of fail function
+          } // end of if Confirm block
+      }); // end of confirmed function of SweetAlert
+    }); // end of button click event function
+  }); // end doc ready
+
+   </script>
 {% endblock %}

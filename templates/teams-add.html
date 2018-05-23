@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+
+{% block title %}Add Team{% endblock %}
+
+
+{% block content%}
+
+<div class="container">
+  <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Add Team:</h1>
+
+    <form action="/teams/add" method="post" id="add-team-form">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" type="text" name="name" placeholder="Name of the Team" required="true">
+      </div>
+      <div class="form-group">
+        <label>Location</label>
+        <input class="form-control" name="location" placeholder="Teams Hometown" required="true"></input>
+      </div>
+      <div class="form-group">
+        <label>Team Colors</label>
+        <textarea class="form-control" name="team_colors" placeholder="Teams Colors" required="true"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Team</button>
+    </form>
+  </div>
+
+{% endblock %}

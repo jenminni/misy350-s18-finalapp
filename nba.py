@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
@@ -85,7 +85,59 @@ def players_edit(id):
     return redirect(url_for('all_players'))
 
 
+@app.route('/api/teams/<int:id>', methods=['DELETE'])
+def delete_ajax_teams(id):
+    teams = Team.query.get_or_404(id)
+    db.session.delete(teams)
+    db.session.commit()
+    return jsonify({"id": str(teams.id), "name": teams.name})
 
+
+@app.route('/api/players/<int:id>', methods=['DELETE'])
+def delete_ajax_players(id):
+    players = Player.query.get_or_404(id)
+    db.session.delete(players)
+    db.session.commit()
+    return jsonify({"id": str(players.id), "name": players.name})
+
+
+@app.route('/teams/add', methods=['GET', 'POST'])
+def add_teams():
+    if request.method == 'GET':
+        return render_template('teams-add.html')
+    if request.method == 'POST':
+        # get data from the form
+        name = request.form['name']
+        location = request.form['location']
+        team_colors = request.form['team_colors']
+
+        # insert the data into the database
+        teams = Team(name=name, location=location, team_colors=team_colors)
+        db.session.add(teams)
+        db.session.commit()
+        return redirect(url_for('all_teams'))
+
+
+@app.route('/players/add', methods=['GET', 'POST'])
+def add_players():
+    if request.method == 'GET':
+        return render_template('players-add.html')
+    if request.method == 'POST':
+        # get data from the form
+        name = request.form['name']
+        age = request.form['age']
+        height = request.form['height']
+        weight = request.form['weight']
+        position = request.form['position']
+        jersey_num = request.form['jersey_num']
+        team_name = request.form['team']
+        team = Team.query.filter_by(name=team_name).first()
+
+        # insert data into the database
+        players = Player(name=name, age=age, height=height, weight=weight, position=position, jersey_num=jersey_num, team=team)
+        db.session.add(players)
+        db.session.commit()
+        return redirect(url_for('all_players'))
 
 if __name__ == '__main__':
     app.run()

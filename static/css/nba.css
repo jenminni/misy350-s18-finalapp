@@ -1,7 +1,11 @@
-#description {
-  color: purple;
+#welcome {
+  font-family: 'Raleway', sans-serif !important;
+}
+
+#title {
+  padding: 15px;
 }
 
 .profile-pic {
-  border-radius: 15px;
+  border-radius: 100px;
 }

@@ -4,25 +4,30 @@
 
 
 {% block content %}
-<head>
-  <h1>About Me</h1>
+<div class="container">
+  <head>
+    <h1>About Me</h1>
 
-  <h3>Jen Minnich</h3>
-</head>
+    <h3>Jen Minnich</h3>
 
-<body>
-  <p>Below are a few fast facts about me!</p>
-  <ul>
-    <li>I attend University of Delaware</li>
-    <li>My major is Management Information Systems</li>
-    <li>I am currently a rising senior</li>
-    <li>I've been coding for 4 years (and counting!)</li>
-    <li>I love basketball and have been keeping up with the playoffs - which is why I chose to incorporate it into my final project</li>
-  </ul>
+    <img class="profile-pic" src="{{ url_for('static', filename='img/jen.jpg') }}" alt="" height="250px" width="180px">
+  </head>
+</div>
 
-  <img class="profile-pic" src="{{ url_for('static', filename='img/jen.jpg') }}" alt="" height="250px" width="180px">
-</body>
+<div class="container">
+  <body>
+    <p>Below are a few fast facts about me!</p>
+    <ul>
+      <li>I attend University of Delaware</li>
+      <li>My major is Management Information Systems</li>
+      <li>I am currently a rising senior</li>
+      <li>I've been coding for 4 years (and counting!)</li>
+      <li>I love basketball and have been keeping up with the playoffs - which is why I chose to incorporate it into my final project</li>
+    </ul>
 
+
+  </body>
+</div>
 
 
 

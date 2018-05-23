@@ -4,9 +4,14 @@
 
 
 {% block content %}
-<h3>Page shows all NBA sports teams in the database</h3>
+<div class="container">
+  <h3 id=title >All NBA sports teams in the database</h3>
+</div>
+
 
 {% if teams %}
+
+<div class="container">
   <table class="table">
   <thead>
     <tr>
@@ -26,7 +31,7 @@
         <td>{{t.team_colors}}</td>
         <td>
           <a href="/teams/edit/{{t.id}}" class="btn btn-primary">Edit</a>
-          <a class="btn btn-danger">Delete</a>
+          <button href="/teams/add" class="btn btn-danger delete_ajax_btn" role="button" data-team-id="{{t.id}}">Delete</a>
         </td>
 
 
@@ -34,6 +39,11 @@
     {% endfor %}
   </tbody>
 </table>
+</div>
+
+<div class="container">
+  <a href="/teams/add" class="btn btn-primary">Add a Team</a>
+</div>
 
 
 {% else %}
@@ -41,3 +51,58 @@
 {% endif %}
 
 {% endblock %}
+
+
+{% block scripts%}
+{{super()}}
+<script>
+  $(document).ready(function() {
+    $(".delete_ajax_btn").click(function(event) {
+      var team_id = $(this).data("team-id");
+      // get the table row of this song
+      var row = $(this).parent().parent();
+      swal({
+          title: "Are you sure?",
+          type: "warning",
+          html: true,
+          showCancelButton: true,
+          confirmButtonColor: "#f44336",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+        },
+        function(isConfirm) {
+            if (isConfirm) {
+              $.ajax({
+                  type: "DELETE",
+                  url: "/api/teams/" + team_id,
+                  success: function(response) {
+                    console.log(response);
+                    row.remove(); // remove the table row
+                    swal({
+                      title: "Deleted!",
+                      text: response.name + " has been deleted.",
+                      type: "success",
+                      timer: 2500,
+                      showConfirmButton: false
+                    }); // end of SweetAlert
+                  } // end of success callback function
+                }) // end of ajax call
+              .fail(function(error) {
+                   // console.log(data);
+                swal({
+                  title:"Oops...",
+                  text: "Deletion failed",
+                  type: "error",
+                  timer: 2000,
+                  showConfirmButton: false
+                }); // end of SweetAlert
+              }); // end of fail function
+          } // end of if Confirm block
+      }); // end of confirmed function of SweetAlert
+    }); // end of button click event function
+  }); // end doc ready
+
+   </script>
+
+   {% endblock %}
