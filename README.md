@@ -50,5 +50,5 @@ Jersey Number |
 Team ID(FK)   |
 
 Where: <br/>
-PK = Primary Key of that table
+PK = Primary Key of that table <br/>
 FK = Foreign Key of that table
