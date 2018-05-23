@@ -1,9 +1,9 @@
 # misy350-s18-finalapp
 This repo contains my final project for MISY350. <br/>
-It is a flask project that includes a web app that allows users access to a database (design details below)
-that includes information about the teams and players that have made it to the Conference Finals of the NBA Playoffs. Users are able to view the database, and edit the players or teams as the playoffs continue.
 
-<br/> ### Instructions for setup are included below
+It is a flask project that includes a web app that allows users access to a database (design details below)
+that includes information about the teams and players that have made it to the Conference Finals of the NBA Playoffs. Users are able to view the database, and edit the players or teams as the playoffs continue. There is also an 'About' section of my app that includes some info about me! Instructions for setup are included below. <br/>
+
 
 # Setup Directions:
 Python version 2.7x is needed.
@@ -29,3 +29,21 @@ Then, initialize the database
 Next, to run the development server (should use -d to run the debugger and automatic reloader)
 
 `$ python manage.py runserver -d`
+
+
+
+# Database Design:
+There are two tables included in my database: Teams and Players. <br/>
+There is a one-to-many relationship between the two - as a team can only have one-to-many players, but a player belongs to one and only one team. <br/>
+The tables are illustrated below
+
+Teams | Players
+------|--------
+ID | ID
+Name | Name
+Location | Age
+Team Colors | Height
+     | Weight
+     | Height
+     | Position
+     | Jersey Number
