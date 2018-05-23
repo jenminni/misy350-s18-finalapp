@@ -1,4 +1,4 @@
-# misy350-s18-finalapp
+# MISY350 Final Project
 This repo contains my final project for MISY350. <br/>
 
 It is a flask project that includes a web app that allows users access to a database (design details below)
@@ -35,7 +35,8 @@ Next, to run the development server (should use -d to run the debugger and autom
 # Database Design:
 There are two tables included in my database: Teams and Players. <br/>
 There is a one-to-many relationship between the two - as a team can only have one-to-many players, but a player belongs to one and only one team. <br/>
-The tables are illustrated below
+
+The tables are illustrated below:
 
 Players | Teams
 --------|------
