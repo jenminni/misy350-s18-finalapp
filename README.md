@@ -37,13 +37,13 @@ There are two tables included in my database: Teams and Players. <br/>
 There is a one-to-many relationship between the two - as a team can only have one-to-many players, but a player belongs to one and only one team. <br/>
 The tables are illustrated below
 
-Teams | Players
-------|--------
+Players | Teams
+--------|------
 ID | ID
 Name | Name
-Location | Age
-Team Colors | Height
-     | Weight
-     | Height
-     | Position
-     | Jersey Number
+Age | Location
+Height | Team Colors
+Weight |        
+Position |       
+Jersey Number |       
+Team ID(FK)   |
