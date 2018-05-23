@@ -8,41 +8,41 @@
 <div class="container">
   <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Add Player:</h1>
 
-    <form action="/players/add" method="post" id="add-player-form">
+    <form action="/players/add" method="post">
       <div class="form-group">
         <label>Name</label>
-        <input class="form-control" type="text" name="name" placeholder="Name of NBA Player" required="true">
+        <input class="form-control" type="text" name="name" placeholder="Name of Player" required="true">
       </div>
       <div class="form-group">
         <label>Age</label>
-        <input class="form-control" name="age" placeholder="Age of NBA Player" required="true"></input>
+        <input class="form-control" name="age" placeholder="Age of Player" required="true"></input>
       </div>
       <div class="form-group">
         <label>Height</label>
-        <input class="form-control" name="height" placeholder="Height of NBA Player" required="true"></input>
+        <input class="form-control" name="height" placeholder="Height of Player" required="true"></input>
       </div>
       <div class="form-group">
         <label>Weight</label>
-        <input class="form-control" name="weight" placeholder="Weight of NBA Player" required="true"></input>
+        <input class="form-control" name="weight" placeholder="Weight of Player" required="true"></input>
       </div>
       <div class="form-group">
         <label>Position</label>
-        <input class="form-control" name="position" placeholder="Position played by NBA Player" required="true"></input>
+        <input class="form-control" name="position" placeholder="Position played by Player" required="true"></input>
       </div>
       <div class="form-group">
         <label>Jersey Number</label>
-        <input class="form-control" name="jersey_num" placeholder="Jersey Number of NBA Player" required="true"></input>
+        <input class="form-control" name="jersey_num" placeholder="Jersey Number of Player" required="true"></input>
       </div>
+
       <div class="form-group">
         <label>Team Name</label>
-        <select class="form-control" name="team" required="true">
+        <select class="form-control" name="team">
           {% for t in teams %}
-
               <option>{{t.name}}</option>
-
           {% endfor %}
         </select>
       </div>
+
       <div class="form-group">
         Team not in the list? <a href="/teams/add" class="btn btn-success" role="button" aria-disabled="true">Add Team</a>
       </div>
