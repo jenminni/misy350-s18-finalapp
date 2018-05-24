@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+
 {% block title %} Homepage {% endblock %}
 
 
@@ -10,19 +11,23 @@
 
   <h1 id="welcome">Welcome to NBA Post!</h1>
 
-  <h4>MISY350 Final Project by Jen Minnich</h4>
+  <h4>Final Project for MISY350 </h4>
+  <h5>By Jen Minnich</h5>
 
 </div>
 </head>
 
 
 <div class="container">
-  <body id="description">
+  <body>
     <p>Since we are in the NBA Playoff season, this web app contains a database
-    of teams who made it to the Semi-finals of their conference. You can view
-    the database under the 'Show' tab in the navigation bar.
-    You can continue to update the database as the games continue under the 'Update'
-    tab in the navigation bar.</p>
+    of teams, and their players, who made it to the Conference Finals for the 2018 NBA Playoffs. You can view
+    the contents of each table within the database from the navigation bar.
+    You can continue to update the database as the games continue within each table's webpage. </br>
+    Enjoy the site and the playoffs!</p>
+
+    <img src="{{ url_for('static', filename='img/nba-finals.png') }}" height="260px" width="785px">
   </body>
 </div>
+
 {% endblock %}
