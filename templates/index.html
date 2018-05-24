@@ -9,9 +9,9 @@
 <div class="container">
 
 
-  <h1 id="welcome">Welcome to NBA Post!</h1>
+  <h1>Welcome to NBA Post!</h1>
 
-  <h4>Final Project for MISY350 </h4>
+  <h4>Final Project for MISY350</h4>
   <h5>By Jen Minnich</h5>
 
 </div>
@@ -26,8 +26,11 @@
     You can continue to update the database as the games continue within each table's webpage. </br>
     Enjoy the site and the playoffs!</p>
 
-    <img src="{{ url_for('static', filename='img/nba-finals.png') }}" height="260px" width="785px">
   </body>
+</div>
+
+<div class="container">
+  <img id="nba-bracket" src="{{ url_for('static', filename='img/nba-bracket.png') }}" height="300px" width="785px">
 </div>
 
 {% endblock %}

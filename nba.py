@@ -121,7 +121,8 @@ def add_teams():
 @app.route('/players/add', methods=['GET', 'POST'])
 def add_players():
     if request.method == 'GET':
-        return render_template('players-add.html')
+        teams = Team.query.all()
+        return render_template('players-add.html', teams=teams)
     if request.method == 'POST':
         # get data from the form
         name = request.form['name']
